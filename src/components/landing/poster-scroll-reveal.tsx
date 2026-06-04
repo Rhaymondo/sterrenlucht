@@ -150,7 +150,7 @@ export function PosterScrollReveal() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://sterrenlucht.nl/cdn/shop/files/poster-eigen-boodschap-taupe.jpg?v=1731193027&width=1800"
+            src="/images/posters/taupe.webp"
             alt="Sterrenlucht sterrenkaart poster"
             className="h-full w-full object-cover"
           />
