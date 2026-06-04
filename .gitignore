@@ -23,6 +23,8 @@
 # misc
 .DS_Store
 *.pem
+FULL-AUDIT-REPORT.md
+ACTION-PLAN.md
 
 # debug
 npm-debug.log*

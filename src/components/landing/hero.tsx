@@ -32,8 +32,8 @@ export function Hero() {
           className="mb-8 text-5xl font-light leading-[1.06] tracking-tight sm:text-6xl lg:text-[5.5rem]"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
-          <span data-hero-line className="block">Geef een cadeau</span>
-          <em data-hero-line className="block">met een verhaal.</em>
+          <span data-hero-line className="block">Jouw sterrenkaart poster,</span>
+          <em data-hero-line className="block">een cadeau met een verhaal.</em>
         </h1>
 
         <p data-hero-fade className="mx-auto mb-12 max-w-[42ch] text-[15px] leading-relaxed text-[var(--muted)]">

@@ -4,6 +4,8 @@ import { Playfair_Display } from 'next/font/google'
 import { ConditionalFooter } from '@/components/conditional-footer'
 import './globals.css'
 
+const BASE_URL = 'https://www.sterrenlucht.nl'
+
 const geist = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -17,19 +19,67 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Sterrenlucht - Jouw persoonlijke sterrenkaart',
+  metadataBase: new URL(BASE_URL),
+  title: 'Sterrenlucht — Jouw persoonlijke sterrenkaart poster cadeau',
   description:
     'Vereewig het nachtelijke hemelgewelf boven jouw bijzondere moment. Op maat gemaakt, voor altijd.',
   openGraph: {
-    title: 'Sterrenlucht',
-    description: 'Jouw persoonlijke sterrenkaart poster',
+    title: 'Sterrenlucht — Jouw persoonlijke sterrenkaart poster',
+    description:
+      'Maak een persoonlijke sterrenkaart poster van jouw bijzondere moment. Op maat gemaakt, snel geleverd.',
     type: 'website',
+    url: BASE_URL,
+    images: [{ url: '/images/og-card.jpg', width: 1200, height: 630 }],
+    siteName: 'Sterrenlucht',
+    locale: 'nl_NL',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sterrenlucht — Jouw persoonlijke sterrenkaart poster',
+    description:
+      'Maak een persoonlijke sterrenkaart poster van jouw bijzondere moment.',
+    images: ['/images/og-card.jpg'],
+  },
+  alternates: {
+    canonical: BASE_URL,
+    languages: { nl: BASE_URL, 'nl-NL': BASE_URL },
+  },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Sterrenlucht',
+  url: BASE_URL,
+  description:
+    'Persoonlijke sterrenkaart posters voor jouw bijzondere moment. Op maat gemaakt, voor altijd.',
+  founders: [
+    { '@type': 'Person', name: 'Kristel' },
+    { '@type': 'Person', name: 'Angelo' },
+  ],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Sterrenlucht',
+  url: BASE_URL,
+  inLanguage: 'nl-NL',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl" className={`${geist.variable} ${playfair.variable} antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
         {children}
         <ConditionalFooter />
