@@ -20,9 +20,9 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
-  title: 'Sterrenlucht — Jouw persoonlijke sterrenkaart poster cadeau',
+  title: 'Sterrenlucht — Jouw persoonlijke sterrenhemel poster',
   description:
-    'Vereewig het nachtelijke hemelgewelf boven jouw bijzondere moment. Op maat gemaakt, voor altijd.',
+    'Een gepersonaliseerde poster van de sterrenlucht zoals die schitterde tijdens jullie bijzondere moment.',
   openGraph: {
     title: 'Sterrenlucht — Jouw persoonlijke sterrenkaart poster',
     description:
