@@ -60,7 +60,7 @@ export async function sendShipping(
 
   const resend = new Resend(process.env.RESEND_API_KEY)
   const result = await resend.emails.send({
-    from:    'Sterrenlucht <onboarding@resend.dev>',
+    from:    'Sterrenlucht <noreply@sterrenlucht.nl>',
     to:      email,
     subject: 'Je poster is onderweg!',
     html:    shippingNotificationHtml({ customerName, trackingUrl, carrier }),

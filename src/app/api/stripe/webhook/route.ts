@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
         }
 
         const emailResult = await resend.emails.send({
-          from: 'Sterrenlucht <onboarding@resend.dev>',
+          from: 'Sterrenlucht <noreply@sterrenlucht.nl>',
           to:   customerEmail,
           subject: 'Bevestiging van je bestelling – Sterrenlucht',
           html: orderConfirmationHtml({

@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   }
 
   const result = await resend.emails.send({
-    from:    'Sterrenlucht <onboarding@resend.dev>',
+    from:    'Sterrenlucht <noreply@sterrenlucht.nl>',
     to:      email,
     subject: 'Je poster is onderweg!',
     html:    shippingNotificationHtml({ customerName, trackingUrl, carrier }),
