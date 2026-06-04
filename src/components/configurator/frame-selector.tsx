@@ -21,7 +21,6 @@ export function FrameSelector() {
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden"
         >
           <p className="mb-4 text-[10px] uppercase tracking-[0.24em] text-[var(--muted)]">Lijst</p>
 
