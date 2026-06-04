@@ -22,8 +22,12 @@ async function isAuthed(): Promise<boolean> {
 export async function login(_: unknown, formData: FormData): Promise<{ error?: string }> {
   const password = formData.get('password') as string
   const expected = hashPassword(process.env.BEHEER_PASSWORD ?? '')
+  const correct  = hashPassword(password) === expected
 
-  if (hashPassword(password) !== expected) {
+  // Always wait 1s to slow brute force — even on success to avoid timing attacks
+  await new Promise(r => setTimeout(r, 1000))
+
+  if (!correct) {
     return { error: 'Ongeldig wachtwoord.' }
   }
 

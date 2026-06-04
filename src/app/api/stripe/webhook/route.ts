@@ -35,7 +35,6 @@ export async function POST(req: NextRequest) {
         expanded.receipt_email ??
         null
 
-      console.log('[Webhook] customerEmail:', customerEmail)
 
       const meta = paymentIntent.metadata
       const shipping = paymentIntent.shipping

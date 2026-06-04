@@ -22,21 +22,19 @@ export async function POST(req: NextRequest) {
       expand: ['data.coupon'],
     })
 
+    const invalid = { valid: false, error: 'Kortingscode is niet geldig.' }
+
     const promoCode = list.data[0]
-    if (!promoCode) {
-      return NextResponse.json({ valid: false, error: 'Kortingscode niet gevonden of niet meer geldig.' })
-    }
+    if (!promoCode) return NextResponse.json(invalid)
 
     const coupon = promoCode.coupon as Stripe.Coupon
 
-    // Check expiry
+    // Check expiry and usage limit — same generic error to prevent enumeration
     if (coupon.redeem_by && coupon.redeem_by < Math.floor(Date.now() / 1000)) {
-      return NextResponse.json({ valid: false, error: 'Deze kortingscode is verlopen.' })
+      return NextResponse.json(invalid)
     }
-
-    // Check usage limit
     if (coupon.max_redemptions != null && coupon.times_redeemed >= coupon.max_redemptions) {
-      return NextResponse.json({ valid: false, error: 'Deze kortingscode is al volledig gebruikt.' })
+      return NextResponse.json(invalid)
     }
 
     // Calculate discount
@@ -46,7 +44,7 @@ export async function POST(req: NextRequest) {
     } else if (coupon.amount_off) {
       discountAmount = coupon.amount_off
     } else {
-      return NextResponse.json({ valid: false, error: 'Ongeldige kortingscode.' })
+      return NextResponse.json(invalid)
     }
 
     const newTotal = Math.max(50, originalAmount - discountAmount) // Stripe minimum €0.50
