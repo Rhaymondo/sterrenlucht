@@ -46,7 +46,7 @@ export function OverOnsContent() {
       </section>
 
       {/* Video */}
-      <ScrollVideo src="/videos/over-ons.mov" minHeight="200vh" loop={false} />
+      <ScrollVideo src="/videos/over-ons.mp4" minHeight="200vh" loop={false} />
 
       {/* Body content */}
       <section className="mx-auto max-w-2xl px-8 py-20 space-y-8">

@@ -22,7 +22,7 @@ export function VideoSection() {
 
   return (
     <ScrollVideo
-      src="https://videos.pexels.com/video-files/18468021/18468021-hd_1920_1080_30fps.mp4"
+      src="/videos/hero-video.mp4"
       overlay={(showOverlay) => (
         <>
           <div className="px-6 text-center">

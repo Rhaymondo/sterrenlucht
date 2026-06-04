@@ -29,10 +29,10 @@ export function Hero() {
     >
       <div className="w-full max-w-4xl">
         <h1
-          className="mb-8 text-5xl font-light leading-[1.06] tracking-tight sm:text-6xl lg:text-[5.5rem]"
+          className="mb-8 text-4xl font-light leading-[1.06] tracking-tight sm:text-5xl lg:text-[4rem]"
           style={{ fontFamily: 'var(--font-serif)' }}
         >
-          <span data-hero-line className="block">Jouw sterrenkaart poster,</span>
+          <span data-hero-line className="block">Jouw sterrenhemel poster,</span>
           <em data-hero-line className="block">een cadeau met een verhaal.</em>
         </h1>
 
