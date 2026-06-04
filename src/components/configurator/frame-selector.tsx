@@ -71,12 +71,13 @@ export function FrameSelector() {
                           className={[
                             'flex h-10 w-10 rounded-full transition-all',
                             selected
-                              ? 'ring-2 ring-[var(--foreground)] ring-offset-2 ring-offset-[var(--background)]'
+                              ? 'ring-2 ring-offset-2 ring-offset-[var(--background)]'
                               : 'ring-1 ring-transparent hover:ring-[var(--muted)] hover:ring-offset-2 hover:ring-offset-[var(--background)]',
                           ].join(' ')}
                           style={{
                             backgroundColor: c.swatch,
                             boxShadow: c.border ? `inset 0 0 0 1px ${c.border}` : undefined,
+                            ['--tw-ring-color' as string]: c.value === 'black' ? '#a8a29e' : 'var(--foreground)',
                           }}
                         />
                         <span className={[

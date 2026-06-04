@@ -102,7 +102,7 @@ const handleAddToCart = () => {
 
 
       {/* Right — form */}
-      <div className="flex flex-1 flex-col overflow-y-auto px-8 py-12 lg:px-16 lg:py-16">
+      <div className="flex flex-1 flex-col px-8 py-12 lg:px-16 lg:py-16">
         <div className="mx-auto w-full max-w-lg">
 
 
