@@ -23,7 +23,8 @@ export function LocationInput() {
   const [loading, setLoading]         = useState(false)
   const [open, setOpen]               = useState(false)
   const [sessionId]                   = useState(() => crypto.randomUUID())
-  const debounce = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const debounce     = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const justSelected = useRef(false)
 
   const search = useCallback(
     async (q: string) => {
@@ -46,12 +47,14 @@ export function LocationInput() {
   )
 
   useEffect(() => {
+    if (justSelected.current) { justSelected.current = false; return }
     if (debounce.current) clearTimeout(debounce.current)
     debounce.current = setTimeout(() => search(query), 320)
     return () => { if (debounce.current) clearTimeout(debounce.current) }
   }, [query, search])
 
   const select = (s: Suggestion) => {
+    justSelected.current = true
     const label = s.full_address ?? s.name
     setQuery(label)
     setOpen(false)
@@ -88,7 +91,7 @@ export function LocationInput() {
           onFocus={() => suggestions.length > 0 && setOpen(true)}
           onBlur={() => {
             setTimeout(() => setOpen(false), 160)
-            // If user typed something but no suggestion was selected yet, accept as free-text
+            if (justSelected.current) return
             if (query.trim() && !location) {
               setLocation({ label: query.trim(), lat: 0, lng: 0, mapboxId: '' })
             }
