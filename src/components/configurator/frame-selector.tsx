@@ -54,7 +54,7 @@ export function FrameSelector() {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.25 }}
-                className="mt-6 overflow-hidden"
+                className="mt-6"
               >
                 <p className="mb-4 text-[10px] uppercase tracking-[0.24em] text-[var(--muted)]">Lijstkleur</p>
                 <div className="flex gap-4">
