@@ -25,7 +25,7 @@ export function Nav() {
       />
       <div className="relative flex items-center justify-between px-8 py-5">
         <Link href="/" aria-label="Sterrenlucht">
-          <SterrenluchtLogo width={125} height={18} />
+          <SterrenluchtLogo width={120} height={17} />
         </Link>
         <div className="flex items-center gap-3">
           <Link
