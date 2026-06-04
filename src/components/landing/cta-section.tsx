@@ -9,10 +9,14 @@ import Link from 'next/link'
 gsap.registerPlugin(ScrollTrigger)
 
 export function CtaSection() {
-  const ref = useRef<HTMLElement>(null)
+  const ref      = useRef<HTMLElement>(null)
+  const linesRef = useRef<HTMLDivElement>(null)
+  const fadeRef  = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    gsap.from('[data-cta-line]', {
+    if (!ref.current || !linesRef.current || !fadeRef.current) return
+
+    gsap.from(linesRef.current.querySelectorAll('[data-cta-line]'), {
       yPercent: 110,
       duration: 0.9,
       stagger: 0.1,
@@ -24,7 +28,7 @@ export function CtaSection() {
       },
     })
 
-    gsap.from('[data-cta-fade]', {
+    gsap.from(fadeRef.current.children, {
       opacity: 0,
       y: 10,
       duration: 0.7,
@@ -45,36 +49,39 @@ export function CtaSection() {
       style={{ backgroundColor: 'var(--surface)' }}
     >
       <div className="mx-auto max-w-lg">
-        <h2 style={{ fontFamily: 'var(--font-serif)' }}>
-          <div className="overflow-hidden">
-            <span
-              data-cta-line
-              className="block text-3xl font-light leading-snug sm:text-4xl"
-            >
-              Klaar om jouw
-            </span>
-          </div>
-          <div className="overflow-hidden">
-            <em
-              data-cta-line
-              className="block text-3xl font-light leading-snug sm:text-4xl"
-            >
-              moment vast te leggen?
-            </em>
-          </div>
-        </h2>
+        <div ref={linesRef}>
+          <h2 style={{ fontFamily: 'var(--font-serif)' }}>
+            <div className="overflow-hidden">
+              <span
+                data-cta-line
+                className="block text-3xl font-light leading-snug sm:text-4xl"
+              >
+                Klaar om jouw
+              </span>
+            </div>
+            <div className="overflow-hidden">
+              <em
+                data-cta-line
+                className="block text-3xl font-light leading-snug sm:text-4xl"
+              >
+                moment vast te leggen?
+              </em>
+            </div>
+          </h2>
+        </div>
 
-        <p data-cta-fade className="mb-10 mt-6 text-[14px] text-[var(--muted)]">
-          Van herinnering naar sterrenluchtposter.<br />Persoonlijk gemaakt, speciaal voor jullie.
-        </p>
+        <div ref={fadeRef} className="flex flex-col items-center">
+          <p className="mb-10 mt-6 text-[14px] text-[var(--muted)]">
+            Van herinnering naar sterrenluchtposter.<br />Persoonlijk gemaakt, speciaal voor jullie.
+          </p>
 
-        <Link
-          data-cta-fade
-          href="/configureer"
-          className="inline-block rounded-full bg-[var(--foreground)] px-9 py-4 text-[11px] uppercase tracking-[0.2em] text-[var(--background)] transition-opacity hover:opacity-70"
-        >
-          Maak jouw poster
-        </Link>
+          <Link
+            href="/configureer"
+            className="inline-block rounded-full bg-[var(--foreground)] px-9 py-4 text-[11px] uppercase tracking-[0.2em] text-[var(--background)] transition-opacity hover:opacity-70"
+          >
+            Maak jouw poster
+          </Link>
+        </div>
       </div>
     </section>
   )
