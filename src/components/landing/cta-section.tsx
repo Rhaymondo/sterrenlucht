@@ -11,10 +11,9 @@ gsap.registerPlugin(ScrollTrigger)
 export function CtaSection() {
   const ref      = useRef<HTMLElement>(null)
   const linesRef = useRef<HTMLDivElement>(null)
-  const fadeRef  = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    if (!ref.current || !linesRef.current || !fadeRef.current) return
+    if (!ref.current || !linesRef.current) return
 
     gsap.from(linesRef.current.querySelectorAll('[data-cta-line]'), {
       yPercent: 110,
@@ -24,19 +23,6 @@ export function CtaSection() {
       scrollTrigger: {
         trigger: ref.current,
         start: 'top 82%',
-        toggleActions: 'play none none none',
-      },
-    })
-
-    gsap.from(fadeRef.current.children, {
-      opacity: 0,
-      y: 10,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: ref.current,
-        start: 'top 78%',
         toggleActions: 'play none none none',
       },
     })
@@ -70,7 +56,7 @@ export function CtaSection() {
           </h2>
         </div>
 
-        <div ref={fadeRef} className="flex flex-col items-center">
+        <div className="flex animate-[fadeIn_.7s_ease_.4s_both] flex-col items-center">
           <p className="mb-10 mt-6 text-[14px] text-[var(--muted)]">
             Van herinnering naar sterrenluchtposter.<br />Persoonlijk gemaakt, speciaal voor jullie.
           </p>
