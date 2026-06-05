@@ -13,7 +13,10 @@ export default function AfrekenPage() {
 
         {/* Heading */}
         <div className="mb-2">
-          <h1 className="text-4xl font-bold uppercase tracking-tight text-[var(--foreground)]">
+          <h1
+            className="text-4xl font-light italic tracking-tight text-[var(--foreground)]"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
             Afrekenen
           </h1>
         </div>

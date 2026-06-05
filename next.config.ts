@@ -17,6 +17,15 @@ const csp = [
 ].join('; ')
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: '/pages/over-ons',        destination: '/over-ons',   permanent: true },
+      { source: '/blogs/blog',             destination: '/',           permanent: true },
+      { source: '/collections/frontpage', destination: '/',           permanent: true },
+      { source: '/pages/contact',         destination: '/contact',    permanent: true },
+      { source: '/products/poster',       destination: '/configureer', permanent: true },
+    ]
+  },
   async headers() {
     return [
       {

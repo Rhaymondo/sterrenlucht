@@ -163,7 +163,10 @@ export default function WinkelwagenPage() {
 
         {/* Page heading */}
         <div className="mb-2">
-          <h1 className="text-4xl font-bold uppercase tracking-tight text-[var(--foreground)]">
+          <h1
+            className="text-4xl font-light italic tracking-tight text-[var(--foreground)]"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
             Winkelwagen
           </h1>
         </div>
