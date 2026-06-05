@@ -32,6 +32,7 @@ export async function POST(req: NextRequest) {
         frame_color:        first.frameColor              ?? '',
         has_gift_card:      String(first.hasGiftCard),
         location_label:     first.location?.label         ?? '',
+        poster_label:       first.posterLabel || (first.location?.label ?? ''),
         location_lat:       String(first.location?.lat    ?? ''),
         location_lng:       String(first.location?.lng    ?? ''),
         location_mapbox_id: first.location?.mapboxId      ?? '',

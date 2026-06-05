@@ -17,7 +17,7 @@ interface SuggestResponse {
 }
 
 export function LocationInput() {
-  const { location, setLocation } = useConfigurator()
+  const { location, setLocation, setPosterLabel } = useConfigurator()
   const [query, setQuery]             = useState(location?.label ?? '')
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [loading, setLoading]         = useState(false)
@@ -65,11 +65,13 @@ export function LocationInput() {
       lng:      s.coordinates?.longitude ?? 0,
       mapboxId: s.mapbox_id,
     })
+    setPosterLabel(s.name)
   }
 
   const clear = () => {
     setQuery('')
     setLocation(null)
+    setPosterLabel('')
     setSuggestions([])
     setOpen(false)
   }
@@ -94,6 +96,7 @@ export function LocationInput() {
             if (justSelected.current) return
             if (query.trim() && !location) {
               setLocation({ label: query.trim(), lat: 0, lng: 0, mapboxId: '' })
+              setPosterLabel(query.trim())
             }
           }}
           placeholder="Bijv. Amsterdam, Vondelpark…"

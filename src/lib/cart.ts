@@ -10,6 +10,7 @@ export interface CartItem {
   frameColor: FrameColor | null
   hasGiftCard: boolean
   location: LocationResult | null
+  posterLabel: string
   date: string | null
   time: string
   message: string

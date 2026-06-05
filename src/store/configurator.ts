@@ -26,6 +26,7 @@ interface ConfigState {
   frameColor: FrameColor | null
   hasGiftCard: boolean
   location: LocationResult | null
+  posterLabel: string
   date: string | null
   time: string
   message: string
@@ -42,6 +43,7 @@ interface ConfigActions {
   setFrameColor: (c: FrameColor) => void
   setHasGiftCard: (v: boolean) => void
   setLocation: (l: LocationResult | null) => void
+  setPosterLabel: (l: string) => void
   setDate: (d: string | null) => void
   setTime: (t: string) => void
   setMessage: (m: string) => void
@@ -79,6 +81,7 @@ const defaults: Omit<ConfigState, keyof Derived> = {
   frameColor: null,
   hasGiftCard: false,
   location: null,
+  posterLabel: '',
   date: null,
   time: '20:00',
   message: '',
@@ -133,6 +136,8 @@ export const useConfigurator = create<ConfiguratorStore>()(
         Object.assign(s, derive(s))
       }),
 
+    setPosterLabel: (l) => set((s) => { s.posterLabel = l }),
+
     setDate: (d) =>
       set((s) => {
         s.date = d
@@ -151,6 +156,7 @@ export const useConfigurator = create<ConfiguratorStore>()(
         s.frameColor  = item.frameColor
         s.hasGiftCard = item.hasGiftCard
         s.location    = item.location
+        s.posterLabel = item.posterLabel ?? ''
         s.date        = item.date
         s.time        = item.time
         s.message     = item.message

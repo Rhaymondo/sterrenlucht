@@ -63,6 +63,7 @@ const handleAddToCart = () => {
       frameColor:   store.frameColor,
       hasGiftCard:  store.hasGiftCard,
       location:     store.location,
+      posterLabel:  store.posterLabel,
       date:         store.date,
       time:         store.time,
       message:      store.message,
@@ -87,9 +88,22 @@ const handleAddToCart = () => {
 
   return (
     <div className="flex flex-1 flex-col lg:flex-row">
-      {/* Mobile — poster preview at top */}
-      <div className="block h-72 lg:hidden">
-        <PosterPreview />
+      {/* Mobile — static poster image */}
+      <div className="block bg-[var(--surface)] px-8 py-10 lg:hidden">
+        {(() => {
+          const color = store.printColor ?? 'taupe'
+          const key = store.hasFrame && store.frameColor
+            ? `${color}-frame-${store.frameColor}`
+            : color
+          const ext = key === 'taupe' ? 'webp' : 'jpg'
+          return (
+            <img
+              src={`/images/posters/${key}.${ext}`}
+              alt="Poster preview"
+              className="mx-auto h-72 w-auto object-contain"
+            />
+          )
+        })()}
       </div>
 
 
@@ -165,6 +179,18 @@ const handleAddToCart = () => {
               {step === 1 && (
                 <>
                   <LocationInput />
+                  <div>
+                    <label className="mb-3 block text-[10px] uppercase tracking-[0.24em] text-[var(--muted)]">
+                      Locatie op poster
+                    </label>
+                    <input
+                      type="text"
+                      value={store.posterLabel}
+                      onChange={(e) => store.setPosterLabel(e.target.value)}
+                      placeholder="Bijv. Utrecht, Amsterdam…"
+                      className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-[13px] text-[var(--foreground)] placeholder:text-[var(--muted)] transition-colors focus:border-[var(--foreground)] focus:outline-none"
+                    />
+                  </div>
                   <DateTimePicker />
                 </>
               )}
@@ -218,6 +244,10 @@ const handleAddToCart = () => {
                 </button>
               )}
             </div>
+
+            <p className="text-center text-[10px] leading-relaxed text-[var(--muted)] opacity-60">
+              De sterrenlucht op de getoonde poster is niet gegenereerd op basis van jouw gekozen locatie, datum en tijd.
+            </p>
           </div>
 
 

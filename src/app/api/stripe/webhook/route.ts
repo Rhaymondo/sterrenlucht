@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
         has_frame:         meta.has_frame === 'true',
         frame_color:       meta.frame_color         || null,
         has_gift_card:     meta.has_gift_card === 'true',
-        location_label:    meta.location_label      || null,
+        location_label:    meta.poster_label || meta.location_label || null,
         location_lat:      meta.location_lat ? Number(meta.location_lat) : null,
         location_lng:      meta.location_lng ? Number(meta.location_lng) : null,
         location_mapbox_id: meta.location_mapbox_id || null,
@@ -68,17 +68,20 @@ export async function POST(req: NextRequest) {
       }
 
       const apiKey = process.env.POSTER_API_KEY
-      const res = await fetch('https://api.sterrenlucht.nl/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(apiKey ? { 'x-api-key': apiKey } : {}),
-        },
-        body: JSON.stringify(payload),
-      })
-
-      if (!res.ok) {
-        console.error('[Webhook] Poster API fout:', res.status, await res.text())
+      try {
+        const res = await fetch('https://api.sterrenlucht.nl/generate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(apiKey ? { 'x-api-key': apiKey } : {}),
+          },
+          body: JSON.stringify(payload),
+        })
+        if (!res.ok) {
+          console.error('[Webhook] Poster API fout:', res.status, await res.text())
+        }
+      } catch (posterErr) {
+        console.error('[Webhook] Poster API onbereikbaar:', posterErr)
       }
 
       if (customerEmail) {

@@ -68,6 +68,9 @@ function ItemRow({
             {item.location?.label && (
               <InlineDetail label="Locatie" value={item.location.label} />
             )}
+            {item.posterLabel && item.posterLabel !== item.location?.label && (
+              <InlineDetail label="Locatie op poster" value={item.posterLabel} />
+            )}
             {item.date && (
               <InlineDetail label="Datum" value={`${item.date} · ${item.time}`} />
             )}
