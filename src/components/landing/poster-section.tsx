@@ -52,6 +52,15 @@ export function PosterSection() {
 
   return (
     <section ref={sectionRef}>
+      {/* Mobile: show image once at the top */}
+      <div className="lg:hidden">
+        <img
+          src="/images/mockup-poster.jpg"
+          alt="Sterrenlucht poster mockup"
+          className="w-full object-cover aspect-[3/4]"
+        />
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left: scrolling panels */}
@@ -60,7 +69,7 @@ export function PosterSection() {
             <div
               key={panel.title}
               data-poster-panel
-              className="flex min-h-[100dvh] items-center py-32"
+              className="flex lg:min-h-[100dvh] items-center py-16 lg:py-32"
             >
               <div className="max-w-sm">
                 <h2

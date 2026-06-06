@@ -52,8 +52,7 @@ export function ScrollVideo({ src, overlay, minHeight = '300vh', loop = true }: 
           muted
           loop={loop}
           playsInline
-          className="block w-full object-cover"
-          style={{ aspectRatio: '16 / 9' }}
+          className="block w-full object-cover h-screen md:h-auto md:aspect-video"
         />
 
         {overlay && (
