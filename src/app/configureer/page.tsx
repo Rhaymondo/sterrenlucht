@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Kies jouw frame, voer locatie en datum in en ontvang een op maat gemaakte sterrenkaart poster van jouw bijzondere moment.',
   alternates: { canonical: `${BASE_URL}/configureer` },
-  openGraph: 
+  openGraph:  {
     title: 'Configureer jouw sterrenkaart poster — Sterrenlucht',
     description:
       'Kies jouw frame, voer locatie en datum in en ontvang een op maat gemaakte sterrenkaart poster van jouw bijzondere moment.',
