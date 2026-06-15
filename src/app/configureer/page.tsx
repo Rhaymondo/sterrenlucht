@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Kies jouw frame, voer locatie en datum in en ontvang een op maat gemaakte sterrenkaart poster van jouw bijzondere moment.',
   alternates: { canonical: `${BASE_URL}/configureer` },
-  openGraph: {
+  openGraph: 
     title: 'Configureer jouw sterrenkaart poster — Sterrenlucht',
     description:
       'Kies jouw frame, voer locatie en datum in en ontvang een op maat gemaakte sterrenkaart poster van jouw bijzondere moment.',
@@ -33,9 +33,11 @@ const productSchema = {
   name: 'Persoonlijke Sterrenlucht Poster',
   description:
     'Op maat gemaakte sterrenkaart poster van jouw bijzondere moment.',
+  image: `${BASE_URL}/images/og-card.jpg`,
   brand: { '@type': 'Brand', name: 'Sterrenlucht' },
   offers: {
     '@type': 'Offer',
+    price: '10.00',
     priceCurrency: 'EUR',
     availability: 'https://schema.org/InStock',
     url: `${BASE_URL}/configureer`,
