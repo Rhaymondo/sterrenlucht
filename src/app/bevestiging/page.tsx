@@ -85,7 +85,7 @@ export default function BevestigingPage() {
   return (
     <>
       <Nav />
-      <main className="px-8 pb-24 pt-28">
+      <main className="px-8 pb-24 pt-4">
         <Suspense>
           <BevestigingContent />
         </Suspense>
