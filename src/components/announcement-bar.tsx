@@ -34,7 +34,7 @@ export function AnnouncementBar() {
   }, [paused])
 
   return (
-    <div className="w-full bg-[#b5727f] text-white text-xs font-medium tracking-widest uppercase">
+    <div className="fixed inset-x-0 top-0 z-[60] w-full bg-[#b5727f] text-white text-xs font-medium tracking-widest uppercase">
       <div className="flex items-center justify-center h-9 gap-4 max-w-screen-xl mx-auto px-4">
         <button
           onClick={prev}
