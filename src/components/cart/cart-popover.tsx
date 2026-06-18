@@ -99,7 +99,7 @@ export function CartPopover() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-black/30"
+            className="fixed inset-0 z-[65] bg-black/30"
             onClick={() => setOpen(false)}
           />
         )}
@@ -113,7 +113,7 @@ export function CartPopover() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 380, damping: 40 }}
-            className="fixed inset-y-0 right-0 z-50 flex w-full flex-col bg-[var(--background)] sm:max-w-[480px]"
+            className="fixed inset-y-0 right-0 z-[70] flex w-full flex-col bg-[var(--background)] sm:max-w-[480px]"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-[var(--border)] px-8 py-6">
