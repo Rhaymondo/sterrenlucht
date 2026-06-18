@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const messages = [
   'Handgemaakt in Houten',
@@ -44,9 +45,18 @@ export function AnnouncementBar() {
           ‹
         </button>
 
-        <span className="text-center leading-none transition-all duration-300">
-          {messages[current]}
-        </span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={current}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.25 }}
+            className="text-center leading-none"
+          >
+            {messages[current]}
+          </motion.span>
+        </AnimatePresence>
 
         <button
           onClick={next}
