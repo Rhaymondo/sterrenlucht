@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import { Playfair_Display } from 'next/font/google'
 import { ConditionalFooter } from '@/components/conditional-footer'
+import { AnnouncementBar } from '@/components/announcement-bar'
 import './globals.css'
 
 const BASE_URL = 'https://www.sterrenlucht.nl'
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
+        <AnnouncementBar />
         {children}
         <ConditionalFooter />
       </body>
