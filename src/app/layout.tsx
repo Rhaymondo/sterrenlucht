@@ -83,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
         <AnnouncementBar />
+        <div className="h-[112px]" />
         {children}
         <ConditionalFooter />
       </body>
