@@ -11,7 +11,7 @@ export function Nav() {
   const borderOpacity = useTransform(scrollY, [0, 64], [0, 1])
 
   return (
-    <motion.header className="fixed inset-x-0 top-0 z-50">
+    <motion.header className="fixed inset-x-0 top-9 z-50">
       <motion.div
         className="absolute inset-0 backdrop-blur-sm"
         style={{
